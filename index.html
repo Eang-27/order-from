@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form - ទម្រង់បញ្ជាទិញ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8 px-4">
+    <div class="max-w-md mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl p-8 fade-in">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <div class="bg-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Order Form</h1>
+                <p class="text-gray-600">ទម្រង់បញ្ជាទិញសម្រាប់ថ្នាក់រៀន</p>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="hidden bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6 fade-in">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Order submitted successfully! ការបញ្ជាទិញបានជោគជ័យ!</span>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="hidden bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6 fade-in">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span id="errorText">Error submitting order. Please try again.</span>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="orderForm" class="space-y-6">
+                <!-- Name Field -->
+                <div>
+                    <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Name / ឈ្មោះ <span class="text-red-500">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 outline-none"
+                        placeholder="Enter your name / បញ្ចូលឈ្មោះ"
+                    >
+                </div>
+
+                <!-- Lesson Paper Field -->
+                <div>
+                    <label for="lessonPaper" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Lesson Paper / ក្រដាស់មេរៀន <span class="text-red-500">*</span>
+                    </label>
+                    <select 
+                        id="lessonPaper" 
+                        name="lessonPaper" 
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 outline-none appearance-none bg-white cursor-pointer"
+                    >
+                        <option value="">Select option / ជ្រើសរើស</option>
+                        <option value="Black & White">Black & White / ស​ខ្មៅ</option>
+                        <option value="Color">Color / ពណ័</option>
+                    </select>
+                </div>
+
+                <!-- PowerPoint Slides Field -->
+                <div>
+                    <label for="powerpoint" class="block text-sm font-semibold text-gray-700 mb-2">
+                        PowerPoint Slides <span class="text-red-500">*</span>
+                    </label>
+                    <select 
+                        id="powerpoint" 
+                        name="powerpoint" 
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-200 outline-none appearance-none bg-white cursor-pointer"
+                    >
+                        <option value="">Select option / ជ្រើសរើស</option>
+                        <option value="Black & White">Black & White / ស​ខ្មៅ</option>
+                        <option value="Color">Color / ពណ័</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    id="submitBtn"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl"
+                >
+                    <span id="btnText">Submit Order / បញ្ជាទិញ</span>
+                    <span id="btnLoading" class="hidden">
+                        <svg class="animate-spin inline-block w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Submitting...
+                    </span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-6 text-gray-600 text-sm">
+            <p>Need help? Contact your administrator</p>
+        </div>
+    </div>
+
+    <script>
+        // IMPORTANT: Replace this URL with your Google Apps Script Web App URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0vg8nuQWzkYsBn3GhV5WTzU3DipwSPOMgi-PQDQbzcKog4yrGHO_1IiFyXDC-H1jG/exec';
+
+        const form = document.getElementById('orderForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnLoading = document.getElementById('btnLoading');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Hide messages
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.classList.add('hidden');
+            btnLoading.classList.remove('hidden');
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                lessonPaper: document.getElementById('lessonPaper').value,
+                powerpoint: document.getElementById('powerpoint').value,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Note: With no-cors mode, we can't read the response
+                // We assume success if no error is thrown
+                successMessage.classList.remove('hidden');
+                form.reset();
+
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+
+            } catch (error) {
+                console.error('Error:', error);
+                errorText.textContent = 'Error submitting order. Please check your connection and try again.';
+                errorMessage.classList.remove('hidden');
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnLoading.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
